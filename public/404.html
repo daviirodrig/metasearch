@@ -7,7 +7,7 @@
     <title>404 // search!</title>
     <meta name="theme-color" content="#1F1E2E" />
     <meta property="og:color" content="#89B4FA" />
-    <link rel="icon" href="/s/teto.png" />
+    <link rel="icon" href="/s/lain.png" />
     <style>
       * {
         box-sizing: border-box;
@@ -78,7 +78,7 @@
         justify-content: center;
         margin-top: 20vh;
 
-        .teto {
+        .lain {
           margin-bottom: 2em;
           user-select: none;
           transition: transform 0.2s;
@@ -154,10 +154,10 @@
   <body>
     <header>
       <img
-        src="/s/teto_big.webp"
+        src="/s/lain_big.webp"
         style="width: 200px; height: 200px"
-        alt="teto"
-        class="teto"
+        alt="lain"
+        class="lain"
         draggable="false"
       />
       <p style="font-size: 20px;text-align: center;line-height: 1.5;">page not found :c<br><a href="/" style="color: #89b4fa;">go home</a></p>
@@ -165,22 +165,22 @@
 
     <script>
       (() => {
-        const teto = document.querySelector(".teto");
-        if (!teto) return;
+        const lain = document.querySelector(".lain");
+        if (!lain) return;
 
         const hitCanvas = document.createElement("canvas");
         const hitCtx = hitCanvas.getContext("2d", { willReadFrequently: true });
         const setupHit = () => {
-          hitCanvas.width = teto.naturalWidth;
-          hitCanvas.height = teto.naturalHeight;
-          hitCtx.drawImage(teto, 0, 0);
+          hitCanvas.width = lain.naturalWidth;
+          hitCanvas.height = lain.naturalHeight;
+          hitCtx.drawImage(lain, 0, 0);
         };
-        if (teto.complete && teto.naturalWidth) setupHit();
-        else teto.addEventListener("load", setupHit, { once: true });
+        if (lain.complete && lain.naturalWidth) setupHit();
+        else lain.addEventListener("load", setupHit, { once: true });
 
         const isOnPlushie = (e) => {
           if (!hitCanvas.width) return false;
-          const rect = teto.getBoundingClientRect();
+          const rect = lain.getBoundingClientRect();
           const x = ((e.clientX - rect.left) / rect.width) * hitCanvas.width;
           const y = ((e.clientY - rect.top) / rect.height) * hitCanvas.height;
           if (x < 0 || y < 0 || x >= hitCanvas.width || y >= hitCanvas.height) return false;
@@ -191,11 +191,11 @@
           }
         };
 
-        teto.addEventListener("pointermove", (e) => {
-          teto.classList.toggle("is-on", isOnPlushie(e));
+        lain.addEventListener("pointermove", (e) => {
+          lain.classList.toggle("is-on", isOnPlushie(e));
         });
-        teto.addEventListener("pointerleave", () => {
-          teto.classList.remove("is-on");
+        lain.addEventListener("pointerleave", () => {
+          lain.classList.remove("is-on");
         });
 
         const canvas = document.createElement("canvas");
@@ -205,7 +205,7 @@
 
         const ctx = canvas.getContext("2d");
         const img = new Image();
-        img.src = "/s/teto.png";
+        img.src = "/s/lain.png";
 
         const dpr = window.devicePixelRatio || 1;
         const resize = () => {
@@ -256,7 +256,7 @@
         };
 
         const spawn = () => {
-          const rect = teto.getBoundingClientRect();
+          const rect = lain.getBoundingClientRect();
           const cx = rect.left + rect.width / 2;
           const cy = rect.top + rect.height / 2;
           const count = window.innerWidth < 600 ? 18 : 32;
@@ -279,7 +279,7 @@
           if (!raf) raf = requestAnimationFrame(tick);
         };
 
-        teto.addEventListener("click", (e) => {
+        lain.addEventListener("click", (e) => {
           if (!isOnPlushie(e)) return;
           spawn();
         });
